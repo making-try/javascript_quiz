@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',function(){
-  const startBtn = document.getElementById('startBtn');
+  const startBtn = document.getElementById('start_btn');
   const url = 'https://opentdb.com/api.php?amount=10';
 
   const shuffleAnswer = function(answers){
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   const waitingMessage = function(){
-    const titleElement = document.getElementById('title');
-    const messageElement = document.getElementById('message');
-    const selectBtn = document.getElementById('selectBtn');
+    const titleElement = document.getElementById('title_name');
+    const messageElement = document.getElementById('message_element');
+    const selectBtn = document.getElementById('select_btn');
 
     while (titleElement.firstChild){
       titleElement.removeChild(titleElement.firstChild);
@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded',function(){
     const pText = document.createTextNode('少々お待ちください');
     pAnchor.appendChild(pText);
 
-    title.appendChild(h1Anchor);
-    message.appendChild(pAnchor);
+    titleElement.appendChild(h1Anchor);
+    messageElement.appendChild(pAnchor);
   }
 
   const resultMessage = function(correctNum){
-    const titleElement = document.getElementById('title');
-    const messageElement = document.getElementById('message');
-    const selectBtn = document.getElementById('selectBtn');
+    const titleElement = document.getElementById('title_name');
+    const messageElement = document.getElementById('message_element');
+    const selectBtn = document.getElementById('select_btn');
 
     while (titleElement.firstChild){
       titleElement.removeChild(titleElement.firstChild);
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded',function(){
     const pText = document.createTextNode('再度チャレンジしたい場合は以下をクリック');
     pAnchor.appendChild(pText);
 
-    title.appendChild(h1Anchor);
-    message.appendChild(pAnchor);
+    titleElement.appendChild(h1Anchor);
+    messageElement.appendChild(pAnchor);
 
     const homeBtnAnchor = document.createElement('input');
     homeBtnAnchor.id = 'homeBtn';
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded',function(){
     //私としては、beforeShuffleAnswersに退避して処理しているつもりなのですが。
     beforeShuffleAnswers.push(quizObj.correct_answer)
     const afterShuffleAnswers = shuffleAnswer(beforeShuffleAnswers);
-    const titleElement = document.getElementById('title');
-    const messageElement = document.getElementById('message');
-    const selectBtn = document.getElementById('selectBtn');
+    const titleElement = document.getElementById('title_name');
+    const messageElement = document.getElementById('message_element');
+    const selectBtn = document.getElementById('select_btn');
 
     while (titleElement.firstChild){
       titleElement.removeChild(titleElement.firstChild);
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded',function(){
       for (const quizObj of quizSet.results) {
         quizNum += 1;
         viewQuiz(quizNum, quizObj);
-        const selectBtn = document.getElementById('selectBtn');
+        const selectBtn = document.getElementById('select_btn');
         const result = await awaitForClick(selectBtn)
         if(quizObj.correct_answer === result.path[0].defaultValue){
           correctNum += 1;
